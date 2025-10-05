@@ -1,8 +1,10 @@
 package com.madmaxgames.beresta.domain
 
-class AddNoteUseCase {
+class AddNoteUseCase(
+    private val repository: NotesRepository
+) {
 
-    fun addNote(name: Note) {
-        TODO()
+    fun addNote(note: Note) {
+        repository.addNotes(note)
     }
 }

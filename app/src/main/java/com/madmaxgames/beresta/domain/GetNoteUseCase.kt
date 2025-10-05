@@ -1,7 +1,9 @@
 package com.madmaxgames.beresta.domain
 
-class GetNoteUseCase {
-    operator fun invoke(noteId: Note): Note {
-        TODO()
+class GetNoteUseCase(
+    private val repository: NotesRepository
+) {
+    operator fun invoke(noteId: Int): Note {
+        return repository.getNote(noteId)
     }
 }
