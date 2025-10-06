@@ -63,7 +63,7 @@ class NotesViewModel : ViewModel() {
 
     // TODO: don't forget remove it
     private fun addSomeNotes() {
-        repeat(50){
+        repeat(5_000){
             addNoteUseCase(title = "title $it", content = "content $it")
         }
     }
@@ -107,5 +107,4 @@ data class NotesScreenState(
     val query: String = "",
     val pinnedNotes: List<Note> = listOf(),
     val other: List<Note> = listOf()
-
 )
