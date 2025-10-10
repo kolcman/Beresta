@@ -1,16 +1,10 @@
 package com.madmaxgames.beresta.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.madmaxgames.beresta.presentation.screens.notes.NotesScreen
 import com.madmaxgames.beresta.presentation.ui.theme.BerestaTheme
 
@@ -20,7 +14,14 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BerestaTheme {
-                NotesScreen()
+                NotesScreen(
+                    onNoteClick = {
+                        Log.d("MainActivity", "Note clicked: ${it}")
+                    },
+                    onAddNoteClick = {
+                        Log.d("MainActivity", "Floating clicked!")
+                    }
+                )
             }
         }
     }

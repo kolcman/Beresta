@@ -12,20 +12,25 @@ object TestNotesRepositoryImpl : NotesRepository {
 
     private val notesListFlow = MutableStateFlow<List<Note>>(listOf())
 
-    override fun addNotes(title: String, content: String) {
+    override suspend fun addNotes(
+        title: String,
+        content: String,
+        isPinned: Boolean,
+        updatedAt: Long
+    ) {
         notesListFlow.update { oldList ->
             val note = Note(
                 id =  oldList.size,
                 title = title,
                 content = content,
-                updatedAt = System.currentTimeMillis(),
-                isPinned = false
+                updatedAt = updatedAt,
+                isPinned = isPinned
             )
             oldList + note
         }
     }
 
-    override fun editNote(note: Note) {
+    override suspend fun editNote(note: Note) {
         notesListFlow.update { oldList ->
             oldList.map {
                 if (it.id == note.id){
@@ -37,7 +42,7 @@ object TestNotesRepositoryImpl : NotesRepository {
         }
     }
 
-    override fun deleteNote(noteId: Int) {
+    override suspend fun deleteNote(noteId: Int) {
         notesListFlow.update { oldList ->
             oldList.toMutableList().apply {
                 removeIf {
@@ -47,7 +52,7 @@ object TestNotesRepositoryImpl : NotesRepository {
         }
     }
 
-    override fun getNote(noteId: Int): Note {
+    override suspend fun getNote(noteId: Int): Note {
         return notesListFlow.value.first {
             it.id == noteId
         }
@@ -66,7 +71,7 @@ object TestNotesRepositoryImpl : NotesRepository {
 
     }
 
-    override fun switchPinnedStatus(noteId: Int) {
+    override suspend fun switchPinnedStatus(noteId: Int) {
         notesListFlow.update { oldList ->
             oldList.map {
                 if (it.id == noteId){
