@@ -3,11 +3,7 @@ package com.madmaxgames.beresta.presentation.screens.notes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.madmaxgames.beresta.data.TestNotesRepositoryImpl
-import com.madmaxgames.beresta.domain.AddNoteUseCase
-import com.madmaxgames.beresta.domain.DeleteNoteUseCase
-import com.madmaxgames.beresta.domain.EditNoteUseCase
 import com.madmaxgames.beresta.domain.GetAllNotesUseCase
-import com.madmaxgames.beresta.domain.GetNoteUseCase
 import com.madmaxgames.beresta.domain.Note
 import com.madmaxgames.beresta.domain.SearchNoteUseCase
 import com.madmaxgames.beresta.domain.SwitchPinnedStatusUseCase
