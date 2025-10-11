@@ -25,4 +25,8 @@ object DateFormater {
             }
         }
     }
+
+    fun formatCurrentDate(): String {
+        return formatter.format(System.currentTimeMillis())
+    }
 }
